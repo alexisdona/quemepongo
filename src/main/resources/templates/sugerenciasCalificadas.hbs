@@ -1,0 +1,108 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="calendario/2019/12">Mi Calendario</a>
+    <a class="navbar-brand" href="guardarropas">Mis Guardarropas</a>
+    <a class="navbar-brand" href="eventos">Mis Eventos</a>
+    <a class="navbar-brand" href="sugerencias">Calificación de sugerencias</a>
+</nav>
+<div class="content">
+    <h3>
+        Elija un evento y luego califique su sugerencia según la efectividad del abrigo
+    </h3>
+    {{#if redirect}}
+    <div>
+        Se aceptó la calificación con éxito
+    </div>
+    {{/if}}
+    <ul>
+        {{#each eventos}}
+        <li>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md">
+                        <a href="/sugerencias/{{idSugerenciaAceptada}}/calificacion">
+                            Elegir el evento {{nombre}}
+                        </a>
+                    </div>
+                    {{#if sugerencia.fueCalificado}}
+                    <div class="col-md">
+                        Puntuación: {{sugerencia.puntuacion}}
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            <dl class="row">
+                    <dt class="col-sm-3">Accesorio</dt>
+                    <dd class="col-sm-9">
+                        {{sugerencia.accesorio.nombre}}
+                        {{sugerencia.accesorio.categoria}}
+                        {{sugerencia.accesorio.material}}
+                        {{sugerencia.accesorio.trama}}
+                    </dd>
+
+                    <dt class="col-sm-3">Prendas Superiores</dt>
+                    <dd class="col-sm-9">
+                        <dl class="row">
+                            {{#each sugerencia.prendasSuperiores}}
+                            <dd class="col-sm-12">
+                                {{nombre}}
+                                {{categoria}}
+                                {{material}}
+                                {{trama}}
+                            </dd>
+                            {{/each}}
+                        </dl>
+                    </dd>
+
+                    <dt class="col-sm-3">Prenda Inferior</dt>
+                    <dd class="col-sm-9">
+                        {{sugerencia.prendaInferior.nombre}}
+                        {{sugerencia.prendaInferior.categoria}}
+                        {{sugerencia.prendaInferior.material}}
+                        {{sugerencia.prendaInferior.trama}}
+                    </dd>
+                    <dt class="col-sm-3">Calzado</dt>
+                    <dd class="col-sm-9">
+                        {{sugerencia.calzado.nombre}}
+                        {{sugerencia.calzado.categoria}}
+                        {{sugerencia.calzado.material}}
+                        {{sugerencia.calzado.trama}}
+                    </dd>
+                    <dt class="col-sm-3">Accesorio Cuello</dt>
+                    <dd class="col-sm-9">
+                        {{sugerencia.accesorioCuello.nombre}}
+                        {{sugerencia.accesorioCuello.categoria}}
+                        {{sugerencia.accesorioCuello.material}}
+                        {{sugerencia.accesorioCuello.trama}}
+                    </dd>
+                    <dt class="col-sm-3">Accesorio Manos</dt>
+                    <dd class="col-sm-9">
+                        {{sugerencia.accesorioManos.nombre}}
+                        {{sugerencia.accesorioManos.categoria}}
+                        {{sugerencia.accesorioManos.material}}
+                        {{sugerencia.accesorioManos.trama}}
+                    </dd>
+                </dl>
+        </li>
+        {{/each}}
+    </ul>
+    {{#if error}}
+    <div class="alert alert-danger err" role="alert">
+        {{error}}
+    </div>
+    {{/if}}
+</div>
+</body>
+{{#if error}}
+<script>
+    window.alert("Un error ha ocurrido")
+</script>
+{{/if}}
+</html>

@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/main.css">
+        <link rel="stylesheet" href="/calendario.css">
+        <script src="js/jquery-1.11.0.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="calendario/2019/12">Mi Calendario</a>
+            <a class="navbar-brand" href="/guardarropas">Mis Guardarropas</a>
+            <a class="navbar-brand" href="/eventos">Mis Eventos</a>
+            <a class="navbar-brand" href="/sugerencias">Calificación de sugerencias</a>
+        </nav>
+        <div class="month">
+                <ul>
+                    <li class="prev">
+                        <input id="mesAnterior" type="button" onclick="mesAnterior();" value="&#10094;"/>
+                    </li>
+                    <li class="next">
+                        <input id="mesSiguiente" type="button" onclick="mesSiguiente();" value="&#10095;"/>
+                    </li>
+                    <li class="mes">
+                        <h3>{{mes}}</h3>
+                        <h4><span style="font-size:18px">{{anio}}</span></h4>
+                    </li>
+                </ul>
+        </div>
+
+        <ul class="weekdays">
+            <li>Domingo</li>
+            <li>Lunes</li>
+            <li>Martes</li>
+            <li>Miércoles</li>
+            <li>Jueves</li>
+            <li>Viernes</li>
+            <li>Sábado</li>
+        </ul>
+
+        <ul class="days">
+            {{#each diasDelMes}}
+                {{#if esDiaDemas}}
+                    <li style="border-style: none; transform: translateY(40px);"></li>
+                {{/if}}
+                {{#if noEsDiaDemas}}
+                    <li>
+                        <h6 id="numeroDia">{{numeroDeDia}}</h6>
+                            <div id="eventos">
+                            {{#each eventos}}
+                                <div id="evento">
+                                    {{nombre}} en {{ubicacion}}
+                                </div>
+                            {{/each}}
+                            </div>
+                            <script>
+                                var eventos = document.querySelectorAll("#evento");
+                                for(i = 0; i < eventos.length; i++) {
+                                    eventos[i].style.backgroundColor = "hsla(" + ~~(360 * Math.random()) + "," +"70%,"+"80%,1)";
+                                }
+                            </script>
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+
+        <a id="nuevoEvento" href="/eventos/new" class="btn btn-lg btn-primary btn-circle"><i class="fa fa-plus"></i></a>
+
+        <script>
+            function mesAnterior(){
+                var pathArray = window.location.pathname.split('/');
+                var mes = parseInt(pathArray.pop());
+                var anio = parseInt(pathArray.pop());
+                if(mes == 1) {
+                    mes = 12;
+                    anio = anio - 1;
+                } else {
+                    mes = mes - 1;
+                }
+                window.location.href = "/calendario/" + anio + "/" + mes;
+            }
+
+            function mesSiguiente(){
+                var pathArray = window.location.pathname.split('/');
+                var mes = parseInt(pathArray.pop());
+                var anio = parseInt(pathArray.pop());
+                if(mes == 12) {
+                    mes = 1;
+                    anio = anio + 1;
+                } else {
+                    mes = mes + 1;
+                }
+                window.location.href = "/calendario/" + anio + "/" + mes;
+            }
+        </script>
+    </body>
+</html>

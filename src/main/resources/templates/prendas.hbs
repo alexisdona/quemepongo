@@ -1,0 +1,104 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/calendario.css">
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        .h2, h2 {
+            font-size: 2rem;
+            background-color: rgba(0,0,0,.075);
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/calendario/2019/12">Mi Calendario</a>
+    <a class="navbar-brand" href="/guardarropas">Mis Guardarropas</a>
+    <a class="navbar-brand" href="/eventos">Mis Eventos</a>
+    <a class="navbar-brand" href="/sugerencias">Calificación de sugerencias</a>
+</nav>
+{{#if error}}
+<div class="alert alert-danger err" role="alert">
+    Hubo un error al crear la prenda: {{mensajeError}}
+</div>
+{{/if}}
+{{#with guardarropa}}
+    <h1 style="display: inline-block">
+        Prendas del {{ nombreGuardarropa }}
+    </h1>
+    <div style="display: inline-block">
+        <a id="nuevaPrenda" href="/guardarropas/{{id}}/prendas/new" class="btn btn-lg btn-primary btn-circle"> + </a>
+    </div>
+    <h2>
+    </h2>
+    <h2>
+        Prendas Superiores
+    </h2>
+    <div class="card-columns">
+        {{#each prendasSuperiores}}
+        <div class="card text-black bg-info mb-3"  style="max-width: 18rem;">
+            <img src="/remera.png"  class="rounded-sm" alt="left">
+            <div class="card-body">
+                <h5 class="card-title">{{nombrePrenda}}</h5>
+                <p class="card-text">{{nombreCategoria}}</p>
+                <p class="card-text">{{nombreMaterial}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <h2>
+        Prendas Inferiores
+    </h2>
+    <div class="card-columns">
+        {{#each prendasInferiores}}
+        <div class="card text-black bg-info mb-3"  style="max-width: 18rem;">
+            <img src="/remera.png"  class="rounded-sm" alt="left">
+            <div class="card-body">
+                <h5 class="card-title">{{nombrePrenda}}</h5>
+                <p class="card-text">{{nombreCategoria}}</p>
+                <p class="card-text">{{nombreMaterial}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <h2>
+        Calzados
+    </h2>
+    <div class="card-columns">
+        {{#each calzados}}
+        <div class="card text-black bg-info mb-3"  style="max-width: 18rem;">
+            <img src="/remera.png"  class="rounded-sm" alt="left">
+            <div class="card-body">
+                <h5 class="card-title">{{nombrePrenda}}</h5>
+                <p class="card-text">{{nombreCategoria}}</p>
+                <p class="card-text">{{nombreMaterial}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <h2>
+        Accesorios
+    </h2>
+    <div class="card-columns">
+        {{#each accesorios}}
+        <div class="card text-black bg-info mb-3" style="max-width: 18rem;">
+            <img src="/remera.png"  class="rounded-sm" alt="left">
+            <div class="card-body">
+                <h5 class="card-title">{{nombrePrenda}}</h5>
+                <p class="card-text">{{nombreCategoria}}</p>
+                <p class="card-text">{{nombreMaterial}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+{{/with}}
+
+
+</body>
+</html>

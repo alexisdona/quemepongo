@@ -1,0 +1,105 @@
+body {
+    background-color: #dae0ff !important;
+}
+
+.content {
+    margin: 0 10px;
+}
+
+.alta-evento {
+    width: 50%;
+}
+
+.titulo {
+    /* font-family: fantasy; */
+    color: #a74fe2;
+    background-color: #f1defa;
+    justify-content: center;
+    display: flex;
+    height: 70px;
+    /* text-align: center; */
+}
+
+.prenda {
+    border: 1px solid gray;
+    margin: 20px;
+    max-width: 100px;
+    padding: 20px;
+}
+
+.detalles {
+    display: inline-block;
+    margin-left: 60px;
+}
+
+@media (min-width: 34em) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (min-width: 48em) {
+    .card-columns {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+}
+
+@media (min-width: 62em) {
+    .card-columns {
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count: 4;
+    }
+}
+
+@media (min-width: 75em) {
+    .card-columns {
+        -webkit-column-count: 5;
+        -moz-column-count: 5;
+        column-count: 5;
+    }
+}
+
+.evento {
+
+}
+
+.sugerencia {
+
+}
+.rating {
+    width: 259px;
+    height: 50px;
+    padding: 10px;
+}
+.rating span { float:right; position:relative; padding: 5px; }
+.rating span input {
+    position:absolute;
+    top:0px;
+    left:0px;
+    opacity:0;
+}
+.rating span label {
+    display:inline-block;
+    width:35px;
+    height:35px;
+    text-align:center;
+    color:#FFF;
+    background:#ccc;
+    font-size:30px;
+    margin-right:2px;
+    line-height:30px;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+}
+.rating span:hover ~ span label,
+.rating span:hover label,
+.rating span.checked label,
+.rating span.checked ~ span label {
+    background: #1579f6;
+    color:#FFF;
+}

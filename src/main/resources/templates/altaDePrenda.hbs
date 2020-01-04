@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang='es' class=''>
+<head>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        h1 {
+            border-bottom: inset;
+        }
+        .stepwizard-step p {
+        margin-top: 0px;
+        color:#666;
+        }
+        .stepwizard-row {
+        display: table-row;
+        }
+        .stepwizard {
+        display: table;
+        width: 100%;
+        position: relative;
+        }
+        .stepwizard-step button[disabled] {
+        }
+        .stepwizard .btn.disabled, .stepwizard .btn[disabled], .stepwizard fieldset[disabled] .btn {
+        opacity:1 !important;
+        color:#bbb;
+        }
+        .stepwizard-row:before {
+        top: 14px;
+        bottom: 0;
+        position: absolute;
+        content:" ";
+        width: 100%;
+        height: 1px;
+        background-color: #ccc;
+        z-index: 0;
+        }
+        .stepwizard-step {
+            display: table-cell;
+            text-align: center;
+            position: relative;
+        }
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 12px;
+            line-height: 1.428571429;
+            border-radius: 15px;
+        }
+	</style>
+</head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/calendario/2019/12">Mi Calendario</a>
+            <a class="navbar-brand" href="/guardarropas">Mis Guardarropas</a>
+            <a class="navbar-brand" href="/eventos">Mis Eventos</a>
+            <a class="navbar-brand" href="/sugerencias">Calificación de sugerencias</a>
+        </nav>
+
+        <div class="container">
+
+            <div class="stepwizard">
+                <div class="stepwizard-row setup-panel">
+                    <div class="stepwizard-step col-xs-3">
+                        <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                        <p><small>Paso 1</small></p>
+                    </div>
+                    <div class="stepwizard-step col-xs-3">
+                        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                        <p><small>Paso 2</small></p>
+                    </div>
+                    <div class="stepwizard-step col-xs-3">
+                        <a href="#step-3" type="button" class="btn btn-default btn-circle"disabled="disabled">3</a>
+                        <p><small>Paso 3</small></p>
+                    </div>
+                    <div class="stepwizard-step col-xs-3">
+                        <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                        <p><small>Confirmar</small></p>
+                    </div>
+                </div>
+            </div>
+
+            <form role="form" action="" method="post">
+                <div class="panel panel-primary setup-content" id="step-1">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <div class="panel-body">
+                        {{#if error}}
+                        <div class="alert alert-danger err" role="alert">
+                            {{error}}
+                        </div>
+                        {{/if}}
+                        <div class="form-group">
+                            <label class="control-label">Nombre prenda:</label>
+                            <input id="nombre" name="nombre" type="text" maxlength="200" required="required" onchange="document.getElementById('nombrePrenda').value = document.getElementById('nombre').value;">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Color Primario:</label>
+                            <p><input id="colorPrimario" name="colorPrimario"type="color" required="required" onchange="document.getElementById('colorPrimarioPrenda').value = document.getElementById('colorPrimario').value;"></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Color Secundario:</label>
+                            <p><input id="colorSecundario" name="colorSecundario" type="color" required="required" onchange="document.getElementById('colorSecundarioPrenda').value = document.getElementById('colorSecundario').value;"></p>
+                        </div>
+                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                    </div>
+                </div>
+
+                <div class="panel panel-primary setup-content" id="step-2">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="control-label">MATERIAL: </label>
+                            <select id="material" name="material" onchange="document.getElementById('materialPrenda').value = document.getElementById('material').value;">
+                                <option>NINGUNA</option>
+                                <option>LANA</option>
+                                <option>ALGODON</option>
+                                <option>CUERO</option>
+                                <option>SEDA</option>
+                                <option>JEAN</option>
+                                <option>ACERO</option>
+                                <option>GOMA</option>
+                                <option>PLASTICO</option>
+                                <option>PLATA</option>
+                                <option>ORO</option>
+                                <option>POLYESTER</option>
+                                <option>LYCRA</option>
+                                <option>LINO</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">TRAMA: </label>
+                            <select id="trama" name="trama" onchange="document.getElementById('tramaPrenda').value = document.getElementById('trama').value;">
+                                <option>NINGUNO</option>
+                                <option>LISA</option>
+                                <option>RAYADA</option>
+                                <option>LUNARES</option>
+                                <option>CUADROS</option>
+                                <option>ESTAMPADO</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">IMPERMEABLE: </label>
+                            <select id="impermeable" name="impermeable" onchange="document.getElementById('impermeablePrenda').value = document.getElementById('impermeable').value;">
+                                <option selected></option>
+                                <option>SI</option>
+                                <option>NO</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+
+                    </div>
+                </div>
+
+                <div class="panel panel-primary setup-content" id="step-3">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div>
+                            <label class="control-label">Tipo Prenda: </label>
+                            <select id="tipo_prenda" name="tipo_prenda">
+                                {{#each tipoDePrendas}}
+                                    <option value="{{id}}">{{nombreTipoPrenda}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                    </div>
+                </div>
+
+                <div class="panel panel-primary setup-content" id="step-4">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Confirmacion</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="control-label">Nombre:</label>
+                            <input id="nombrePrenda" type="text" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Color Primario:</label>
+                            <input id="colorPrimarioPrenda" type="color" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Color Secundario:</label>
+                            <input id="colorSecundarioPrenda" type="color" readonly>
+                        </div>
+                        <div>
+                            <label class="control-label">Material:</label>
+                            <input id="materialPrenda" type="text" readonly>
+                        </div>
+                        <div>
+                            <label class="control-label">Trama:</label>
+                            <input id="tramaPrenda" type="text" readonly>
+                        </div>
+                        <div>
+                            <label class="control-label">Impermeable:</label>
+                            <input id="impermeablePrenda" type="text" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Tipo:</label>
+                            <input id="tipo" type="text" readonly style="width: 85%">
+                            </input>
+                        </div>
+                        <button class="btn btn-success pull-right" type="submit" >Finalizar</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+            var navListItems = $('div.setup-panel div a'),
+                allWells = $('.setup-content'),
+                allNextBtn = $('.nextBtn');
+
+            allWells.hide();
+
+            navListItems.click(function (e) {
+                e.preventDefault();
+                var $target = $($(this).attr('href')),
+                    $item = $(this);
+
+                if (!$item.hasClass('disabled')) {
+                    navListItems.removeClass('btn-success').addClass('btn-default');
+                    $item.addClass('btn-success');
+                    allWells.hide();
+                    $target.show();
+                    $target.find('input:eq(0)').focus();
+                }
+            });
+
+            allNextBtn.click(function () {
+                var curStep = $(this).closest(".setup-content"),
+                    curStepBtn = curStep.attr("id"),
+                    nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                    curInputs = curStep.find("input[type='text'],input[type='url']"),
+                    isValid = true;
+
+                $(".form-group").removeClass("has-error");
+                for (var i = 0; i < curInputs.length; i++) {
+                    if (!curInputs[i].validity.valid) {
+                        isValid = false;
+                        $(curInputs[i]).closest(".form-group").addClass("has-error");
+                    }
+                }
+                $("#tipo").val($( '#tipo_prenda option:selected' ).text());
+                if (isValid) nextStepWizard.removeAttr('disabled').trigger('click');
+            });
+
+            $('div.setup-panel div a.btn-success').trigger('click');
+        });
+        </script>
+    </body>
+</html>
